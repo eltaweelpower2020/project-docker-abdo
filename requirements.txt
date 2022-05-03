@@ -9,7 +9,6 @@ psycopg2==2.8.6
 uWSGI==2.0.19.1
 async-generator==1.10
 attrs==21.4.0
-certifi
 cffi==1.15.0
 charset-normalizer==2.0.12
 cryptography==36.0.2
