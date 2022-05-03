@@ -30,7 +30,7 @@ DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 # ALLOWED_HOSTS = ['*','161.35.154.227']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['161.35.154.227']
 ALLOWED_HOSTS_ENV=os.environ.get("ALLOWED_HOSTS")
 if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
