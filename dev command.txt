@@ -1,0 +1,1 @@
+ cd C:\Users\mahmedelta\Desktop\webscraping last 11 april && venv\Scripts\activate && cd project\ && code . &&  python manage.py runserver

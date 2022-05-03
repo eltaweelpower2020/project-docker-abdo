@@ -1,0 +1,68 @@
+version: '3.7'
+
+services: 
+  
+  db:
+    container_name: 'mainpostgres45'
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password123
+      TZ: "Asia/Riyadh"
+      PGTZ: 'Asia/Riyadh'
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+      - target:/var/run/postgresql/
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+  app:
+    container_name: 'mainapp45'
+    build: 
+      context: .
+    volumes: 
+      - static_data:/vol/web
+      - target:/var/run/postgresql/
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment: 
+      - SECRET_KEY=samplesecretkey123
+      - ALLOWED_HOSTS=127.0.0.1,localhost,flower-ghost.online,www.flower-ghost.online,161.35.154.227
+      - DJANGO_SU_NAME=eltaweel
+      - DJANGO_SU_EMAIL=mr.eltaweel@gmail.com
+      - DJANGO_SU_PASSWORD=123qwe456asd
+    depends_on:
+      - db
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+      
+  proxy:
+    container_name: 'mainproxy'
+    build: 
+      context: ./proxy
+    volumes: 
+      - static_data:/vol/static
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports: 
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    depends_on: 
+      - app
+
+
+volumes: 
+  static_data:
+  pgdata:
+  target:

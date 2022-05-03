@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{%block title%}ADS {%endblock%}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Social Platform</li>
+{%endblock%}
+
+{% block content %}
+
+
+<div class="card-body">
+    <h3 class="card-title">Log in with your Facebook or Instagram credentials</h3>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+      {% include 'includes/form.html' %}
+      <button type="submit" class="btn btn-primary btn-block">Save credentials and get all ads</button>
+    </form>
+    <a href="get_all_face_insta_accounts">
+      <button type="button" class="btn btn-primary btn-block">List All Credentials</button>
+    </a>
+    
+  </div>
+
+{%endblock%}

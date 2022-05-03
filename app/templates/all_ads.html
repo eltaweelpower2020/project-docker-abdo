@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{%block title%}ALL ADS {%endblock%}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Social Platform</li>
+{%endblock%}
+
+{% block content %}
+
+<html lang="en">
+   <head>
+      <!-- Meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <title>Bootstrap 4 Example</title>
+   </head>
+   <body>
+      <div class="container">
+         <h2 >All Facebook or Instagram credentials in your datbase</h2>
+         <div class="card-deck">
+            {% for ad in created_by_all%}
+            <div class="card">
+               <img class="card-img-top" src="{{ad.image_url}}" alt="Card Groups">
+               <div class="card-body">
+                  <h5 class="card-title">ADS  by : {{ad.created_by}}</h5>
+
+
+                  <span class="card-detail-badge ">ADS  at </span>
+                  <h5 class="mt-3">{{ad.boosted}}</h5>
+                  <span class="card-detail-badge ">ADS status</span>
+                  <h5 class="mt-3">{{ad.status}}</h5>
+                  <span class="card-detail-badge ">ADS reach </span>
+                  <h5 class="mt-3">{{ad.reach}}</h5>
+                  <span class="card-detail-badge ">ADS objective </span>
+                  <h5 class="mt-3">{{ad.objective}} Link Clicks</h5>
+                  <span class="card-detail-badge ">ADS total spent </span>
+                  <h5 class="mt-3">{{ad.amount_spent}}</h5>
+                  <span class="card-detail-badge ">Cost per Link Click </span>
+                  <h5 class="mt-3">{{ad.Cost_per_Link_Click}}</h5>
+                  <span class="card-detail-badge ">ADS total amount</span>
+                  <h5 class="mt-3">{{ad.total_amount}}</h5>
+
+
+               </div>
+               <div class="card-footer">
+                  <small class="text-muted">ADS status : {{ad.status}}</small>
+               </div>
+            </div>
+            {% endfor %}
+            
+         </div>
+      </div>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   </body>
+</html>
+{%endblock%}
+
+
+
+
+
+
+
+
+
