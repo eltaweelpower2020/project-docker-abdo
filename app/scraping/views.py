@@ -117,6 +117,7 @@ def scrapingfunction(facebook_info):
      facebook_password=facebook_info.facebook_password     
 
      option = Options()
+     option.headless = True
      option.add_argument("--disable-infobars")
      option.add_argument("start-maximized")
      option.add_argument("--disable-extensions")
