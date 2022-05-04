@@ -119,6 +119,7 @@ def scrapingfunction(facebook_info):
      option = Options()
      option.headless = True
      option.add_argument("--disable-infobars")
+     option.add_argument("--headless")
      option.add_argument("start-maximized")
      option.add_argument("--disable-extensions")
      option.add_experimental_option("prefs", { 
